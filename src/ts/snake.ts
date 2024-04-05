@@ -2,6 +2,8 @@ export class Snake {
   private segments: { posX: number; posY: number }[];
   private posX: number;
   private posY: number;
+  private directionX: number = 1;
+  private directionY: number = 0;
 
   public constructor() {
     this.segments = [
@@ -13,39 +15,17 @@ export class Snake {
     this.posY = 400;
   }
 
-  public moveLeft(): void {
-    if (this.deadSnake()) {
-      return;
+  // Resto de métodos
+
+  public changeDirection(dirX: number, dirY: number): void {
+    // No permitir cambios de dirección opuestos para evitar colisiones consigo mismo
+    if (this.directionX !== -dirX || this.directionY !== -dirY) {
+      this.directionX = dirX;
+      this.directionY = dirY;
     }
-    this.move();
-    this.posX -= 10;
   }
 
-  public moveRight(): void {
-    if (this.deadSnake()) {
-      return;
-    }
-    this.move();
-    this.posX += 10;
-  }
-
-  public moveUp(): void {
-    if (this.deadSnake()) {
-      return;
-    }
-    this.move();
-    this.posY -= 10;
-  }
-
-  public moveDown(): void {
-    if (this.deadSnake()) {
-      return;
-    }
-    this.move();
-    this.posY += 10;
-  }
-
-  private move(): void {
+  public move(): void {
     if (this.segments.length > 0) {
       // Actualiza la posición del cuerpo del snake
       for (let i = this.segments.length - 1; i > 0; i--) {
@@ -53,6 +33,10 @@ export class Snake {
       }
       this.segments[0] = { posX: this.posX, posY: this.posY };
     }
+
+    // Mueve la cabeza en la dirección actual
+    this.posX += this.directionX * 10;
+    this.posY += this.directionY * 10;
   }
 
   public getSegments(): { posX: number; posY: number }[] {
@@ -73,11 +57,5 @@ export class Snake {
 
   public setPosY(posY: number): void {
     this.posY = posY;
-  }
-
-  private deadSnake(): boolean {
-    return (
-      this.posX < 10 || this.posX > 780 || this.posY < 10 || this.posY > 780
-    );
   }
 }

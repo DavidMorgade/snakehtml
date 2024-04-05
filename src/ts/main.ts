@@ -7,27 +7,41 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const startGame = () => {
+  updateSnakePosition();
   document.addEventListener("keydown", (event) => evaluateKey(event));
 };
 
+let intervalId: number | null = null;
+
 const evaluateKey = (event: KeyboardEvent) => {
-  switch (event.key) {
-    case "ArrowUp":
-      snake.moveUp();
-      break;
-    case "ArrowDown":
-      snake.moveDown();
-      break;
-    case "ArrowLeft":
-      snake.moveLeft();
-      break;
-    case "ArrowRight":
-      snake.moveRight();
-      break;
+  if (event.key.startsWith("Arrow")) {
+    // Cambiar la dirección del snake inmediatamente
+    switch (event.key) {
+      case "ArrowUp":
+        snake.changeDirection(0, -1); // Arriba
+        break;
+      case "ArrowDown":
+        snake.changeDirection(0, 1); // Abajo
+        break;
+      case "ArrowLeft":
+        snake.changeDirection(-1, 0); // Izquierda
+        break;
+      case "ArrowRight":
+        snake.changeDirection(1, 0); // Derecha
+        break;
+    }
   }
-  console.log(snake.getPosX(), snake.getPosY());
-  updateSnakePosition();
 };
+
+const startAutoMove = () => {
+  intervalId = setInterval(() => {
+    snake.move();
+    updateSnakePosition();
+  }, 200);
+};
+
+// Iniciar el movimiento automático al cargar la página
+startAutoMove();
 
 function updateSnakePosition() {
   const snakeSegments = snake.getSegments();
