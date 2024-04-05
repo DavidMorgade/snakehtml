@@ -30,9 +30,20 @@ const evaluateKey = (event: KeyboardEvent) => {
 };
 
 function updateSnakePosition() {
-  const snakeElement = document.getElementById("snake");
-  if (snakeElement) {
-    snakeElement.style.left = `${snake.getPosX()}px`;
-    snakeElement.style.top = `${snake.getPosY()}px`;
+  const snakeSegments = snake.getSegments();
+  const container = document.getElementById("game");
+
+  if (container) {
+    // Limpiar el contenedor
+    container.innerHTML = "";
+
+    // Pintar cada segmento del snake
+    snakeSegments.forEach((segment) => {
+      const segmentElement = document.createElement("div");
+      segmentElement.classList.add("snake-segment");
+      segmentElement.style.left = `${segment.posX}px`;
+      segmentElement.style.top = `${segment.posY}px`;
+      container.appendChild(segmentElement);
+    });
   }
 }
