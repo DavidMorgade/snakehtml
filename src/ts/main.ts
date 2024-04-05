@@ -1,14 +1,18 @@
+import { Point } from "./point";
 import { Snake } from "./snake";
 
 const snake = new Snake();
+const point = new Point();
+const container = document.getElementById("game") as HTMLDivElement;
 
 document.addEventListener("DOMContentLoaded", () => {
   startGame();
 });
 
 const startGame = () => {
-  updateSnakePosition();
+  point.generatePointOnGameBoard(container);
   document.addEventListener("keydown", (event) => evaluateKey(event));
+  startAutoMove();
 };
 
 let intervalId: number | null = null;
@@ -40,24 +44,36 @@ const startAutoMove = () => {
   }, 200);
 };
 
-// Iniciar el movimiento automático al cargar la página
-startAutoMove();
-
 function updateSnakePosition() {
   const snakeSegments = snake.getSegments();
-  const container = document.getElementById("game");
 
-  if (container) {
-    // Limpiar el contenedor
-    container.innerHTML = "";
+  // Limpiar el contenedor
+  container.innerHTML = "";
 
-    // Pintar cada segmento del snake
-    snakeSegments.forEach((segment) => {
-      const segmentElement = document.createElement("div");
-      segmentElement.classList.add("snake-segment");
-      segmentElement.style.left = `${segment.posX}px`;
-      segmentElement.style.top = `${segment.posY}px`;
-      container.appendChild(segmentElement);
-    });
+  // Pintar cada segmento del snake
+  snakeSegments.forEach((segment) => {
+    const segmentElement = document.createElement("div");
+    segmentElement.classList.add("snake-segment");
+    segmentElement.style.left = `${segment.posX}px`;
+    segmentElement.style.top = `${segment.posY}px`;
+    container.appendChild(segmentElement);
+  });
+
+  // Volver a dibujar el punto si aún no ha sido capturado
+  if (!pointIsCaptured(snake)) {
+    point.generatePointOnGameBoard(container);
+  } else {
+    // Generar un nuevo punto si el anterior ha sido capturado
+    point.generateNewPoint();
   }
+}
+
+function pointIsCaptured(snake: Snake): boolean {
+  const snakeHeadX = snake.getPosX();
+  const snakeHeadY = snake.getPosY();
+  const pointX = point.getPosX();
+  const pointY = point.getPosY();
+
+  // Comprobar si la cabeza de la serpiente está en la misma posición que el punto
+  return snakeHeadX === pointX && snakeHeadY === pointY;
 }

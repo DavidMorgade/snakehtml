@@ -32,5 +32,11 @@
   position: absolute;
   width: 10px;
   height: 10px;
-  background-color: green; /* Color del snake */
+  background-color: white; /* Color del snake */
+}
+.point {
+  width: 10px;
+  height: 10px;
+  background-color: red; /* Color del punto */
+  position: absolute;
 }
