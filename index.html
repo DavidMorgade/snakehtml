@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/styles/index.css" />
+    <title>Snake - GAME</title>
+  </head>
+  <body>
+    <div id="app">
+      <main>
+        <div id="game-board">
+          <div id="game" width="800" height="800">
+            <div id="snake"></div>
+          </div>
+
+          <div id="score">
+            <h1>Score: <span id="score-value">0</span></h1>
+            <button id="reset-button">Reset</button>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="src/ts/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+* ¨ {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /*box shadow that simulates a red border*/
+  box-shadow: 0 0 0 5px red;
+}
+
+#game-board {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#game {
+  width: 800px;
+  height: 800px;
+  background-color: black;
+  border: 5px solid red;
+  position: relative;
+}
+#snake {
+  width: 30px;
+  height: 10px;
+  background-color: green;
+  position: absolute;
+  top: 400px;
+  left: 10px;
+}
