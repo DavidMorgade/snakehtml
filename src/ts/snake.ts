@@ -4,6 +4,7 @@ export class Snake {
   private posY: number;
   private directionX: number = 1;
   private directionY: number = 0;
+  private speed: number = 200;
 
   public constructor() {
     this.segments = [
@@ -39,8 +40,17 @@ export class Snake {
     this.posY += this.directionY * 10;
   }
 
+  public grow(): void {
+    // Añade un segmento al final del cuerpo
+    this.segments.push({ posX: this.posX, posY: this.posY });
+    this.speed -= 0.05;
+  }
+
   public getSegments(): { posX: number; posY: number }[] {
     return this.segments;
+  }
+  public getSpeed(): number {
+    return this.speed;
   }
 
   public getPosX(): number {

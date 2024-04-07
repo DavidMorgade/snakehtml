@@ -41,7 +41,7 @@ const startAutoMove = () => {
   intervalId = setInterval(() => {
     snake.move();
     updateSnakePosition();
-  }, 200);
+  }, snake.getSpeed());
 };
 
 function updateSnakePosition() {
@@ -63,6 +63,7 @@ function updateSnakePosition() {
   if (!pointIsCaptured(snake)) {
     point.generatePointOnGameBoard(container);
   } else {
+    snake.grow();
     // Generar un nuevo punto si el anterior ha sido capturado
     point.generateNewPoint();
   }
@@ -73,7 +74,6 @@ function pointIsCaptured(snake: Snake): boolean {
   const snakeHeadY = snake.getPosY();
   const pointX = point.getPosX();
   const pointY = point.getPosY();
-
   // Comprobar si la cabeza de la serpiente está en la misma posición que el punto
   return snakeHeadX === pointX && snakeHeadY === pointY;
 }
