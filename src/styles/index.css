@@ -5,6 +5,12 @@
   /*box shadow that simulates a red border*/
   box-shadow: 0 0 0 5px red;
 }
+#score {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  align-items: center;
+}
 
 #game-board {
   background-color: white;
