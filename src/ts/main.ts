@@ -1,15 +1,17 @@
 import { Point } from "./point";
 import { Snake } from "./snake";
-import { Player } from "./player";
+import { player } from "./login";
 
-const player = new Player("");
+// Objects
 const snake = new Snake();
 const point = new Point();
+// HTML Elements
 const container = document.getElementById("game") as HTMLDivElement;
 const resetButton = document.getElementById(
   "reset-button"
 ) as HTMLButtonElement;
 
+// Event Listeners
 resetButton.addEventListener("click", () => {
   document.location.reload();
 });
@@ -20,8 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const setHTMLNameAndScore = () => {
-  const playerName = prompt("Introduce tu nombre de jugador");
-  player.setName = playerName || "Player";
   player.setHTMLPlayerName();
   player.setHTMLPlayerScore();
 };
