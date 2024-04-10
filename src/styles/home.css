@@ -1,0 +1,108 @@
+:root {
+  --bg-color: #150137;
+  --modal-color: rgba(81, 61, 125, 0.5);
+  --text-color: white;
+  --black-color: black;
+  --font-family: "Roboto", sans-serif;
+}
+
+* {
+  box-shadow: 0 0 0 2px red;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+}
+
+#play,
+#pause {
+  float: left;
+  width: 40px;
+  transition: transform 0.3s;
+}
+#play:hover,
+#pause:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+#play {
+  display: none;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  color: var(--text-color);
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  background-color: var(--modal-color);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: var(--modal-color);
+  color: var(--text-color);
+  box-shadow: 0 0 10px 5px var(--bg-color);
+  width: 800px;
+  height: 600px;
+  backdrop-filter: blur(5px);
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+.button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--text-color);
+  color: var(--modal-color);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.button:hover {
+  transform: scale(1.1);
+}
+.sound {
+  margin-top: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  color: var(--text-color);
+}
+.footer__heading {
+  font-size: 1.5rem;
+}
+.footer__span {
+  font-size: 1.5rem;
+  font-style: italic;
+}

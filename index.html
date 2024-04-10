@@ -3,22 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/styles/index.css" />
-    <title>Snake - GAME</title>
+    <link rel="stylesheet" href="./src/styles/normalize.css" />
+    <link rel="stylesheet" href="./src/styles/home.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Snake</title>
   </head>
   <body>
-    <div id="app">
-      <main>
-        <div id="game-board">
-          <div id="game" width="800" height="600"></div>
-          <div id="score">
-            <h1 id="player-name"></h1>
-            <h2>Score: <span id="player-score">0</span></h2>
-            <button id="reset-button">Reset</button>
-          </div>
+    <header class="header">
+      <h1>PlaySnake Browser</h1>
+    </header>
+    <main class="main">
+      <div class="modal">
+        <form class="form" >
+          <label for="player-name">Enter your name:</label>
+          <input type="text" id="player-name" name="player-name" required />
+          <input
+            type="submit"
+            value="Start Game"
+            id="start-game"
+            class="button"
+          />
+        </form>
+        <div class="sound">
+          <img
+            id="play"
+            onclick="toggleAudio()"
+            src="https://res.cloudinary.com/dchan630/image/upload/v1481676817/play_ierlvl.png"
+            class="img-fluid"
+            alt="Responsive image"
+          /><audio
+            id="player"
+            src="https://res.cloudinary.com/dchan630/video/upload/v1481677767/Narcos_s4yvuf.mp3"
+          ></audio>
+          <img
+            id="pause"
+            onclick="toggleAudio()"
+            src="https://res.cloudinary.com/dchan630/image/upload/v1481676820/pause_nqfaht.png"
+            class="img-fluid"
+            alt="Responsive image"
+          />
+          <p class="sound__enable">Enable Sound</p>
         </div>
-      </main>
-    </div>
-    <script type="module" src="src/ts/main.ts"></script>
+      </div>
+    </main>
+    <footer class="footer">
+      <h2 class="footer__heading">
+        Developed by <span class="footer__span">David Morgade Gil</span>
+      </h2>
+      <a href="https://www.developermorgade.es/">Developer Morgade</a>
+    </footer>
   </body>
 </html>
