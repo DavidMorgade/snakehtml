@@ -3,7 +3,6 @@ export class Point {
   private posY: number;
 
   public constructor() {
-    console.log("Point created");
     this.posX = this.generateRandomCoordinate();
     this.posY = this.generateRandomCoordinate();
   }
