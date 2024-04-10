@@ -7,7 +7,7 @@ export class Snake {
   private posY: number;
   private directionX: number = 1;
   private directionY: number = 0;
-  private speed: number = 200;
+  private speed: number = 100;
   private intervalId: number | null = null;
 
   public constructor() {
@@ -25,8 +25,10 @@ export class Snake {
   public changeDirection(dirX: number, dirY: number): void {
     // No permitir cambios de dirección opuestos para evitar colisiones consigo mismo
     if (this.directionX !== -dirX || this.directionY !== -dirY) {
-      this.directionX = dirX;
-      this.directionY = dirY;
+      setTimeout(() => {
+        this.directionX = dirX;
+        this.directionY = dirY;
+      }, 80);
     }
   }
 
@@ -69,6 +71,10 @@ export class Snake {
     player: Player,
     point: Point
   ) => {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+
     this.intervalId = setInterval(() => {
       this.move();
       this.updateSnakePosition(container, player, point);
@@ -80,11 +86,6 @@ export class Snake {
     player: Player,
     point: Point
   ): void {
-    if (this.checkColision()) {
-      clearInterval(this.intervalId as number);
-      alert(`¡Has perdido! Tu puntuación ha sido de ${player.getScore}`);
-      document.location.reload();
-    }
     const snakeSegments = this.getSegments();
 
     // Limpiar el contenedor
@@ -98,12 +99,16 @@ export class Snake {
       segmentElement.style.top = `${segment.posY}px`;
       container.appendChild(segmentElement);
     });
-
+    if (this.checkColision()) {
+      clearInterval(this.intervalId as number);
+      alert(`¡Has perdido! Tu puntuación ha sido de ${player.getScore}`);
+      document.location.reload();
+    }
     // Volver a dibujar el punto si aún no ha sido capturado
     if (!this.pointIsCaptured(point)) {
       point.generatePointOnGameBoard(container);
     } else {
-      this.grow();
+      this.grow(container, player, point);
       player.increaseScore();
       // Generar un nuevo punto si el anterior ha sido capturado
       point.generateNewPoint();
@@ -119,13 +124,14 @@ export class Snake {
     return snakeHeadX === pointX && snakeHeadY === pointY;
   }
 
-  public checkColision(): boolean {
+  private checkColision(): boolean {
+    const snakeHead = this.segments[0];
     // Comprueba si la cabeza del snake colisiona con los límites del tablero
     if (
-      this.posX < -10 ||
-      this.posX >= 810 ||
-      this.posY < -10 ||
-      this.posY >= 810
+      snakeHead.posX < -9 ||
+      snakeHead.posX >= 800 ||
+      snakeHead.posY < -9 ||
+      snakeHead.posY >= 800
     ) {
       return true;
     }
@@ -143,10 +149,12 @@ export class Snake {
     return false;
   }
 
-  public grow(): void {
+  private grow(container: HTMLDivElement, player: Player, point: Point): void {
     // Añade un segmento al final del cuerpo
     this.segments.push({ posX: this.posX, posY: this.posY });
-    this.speed -= 0.05;
+    const newSpeed = this.speed - 2;
+    this.speed = Math.max(newSpeed, 2);
+    this.startAutoMove(container, player, point);
   }
 
   public getSegments(): { posX: number; posY: number }[] {
