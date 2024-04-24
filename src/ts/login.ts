@@ -1,6 +1,8 @@
 import { Player } from "./player";
 
 const form = document.getElementById("form") as HTMLFormElement;
+const audioButtonMuted = document.getElementById("pause") as HTMLButtonElement;
+const audioButtonUnmuted = document.getElementById("play") as HTMLButtonElement;
 
 export const player = new Player("");
 
@@ -14,6 +16,10 @@ form.addEventListener("submit", (event) => {
     module.startGame(player);
   });
 });
+
+audioButtonMuted.addEventListener("click", toogleAudio);
+
+audioButtonUnmuted.addEventListener("click", toogleAudio);
 
 const addSnakeHTML = () => {
   const app = document.getElementById("app") as HTMLDivElement;
@@ -34,3 +40,13 @@ const addSnakeHTML = () => {
   `;
   document.body.appendChild(newApp);
 };
+
+function toogleAudio() {
+  if (audioButtonMuted.style.display === "none") {
+    audioButtonMuted.style.display = "block";
+    audioButtonUnmuted.style.display = "none";
+  } else {
+    audioButtonMuted.style.display = "none";
+    audioButtonUnmuted.style.display = "block";
+  }
+}
