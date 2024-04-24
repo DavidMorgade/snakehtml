@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/styles/normalize.css" />
     <link rel="stylesheet" href="./src/styles/home.css" />
+    <link rel="stylesheet" href="./src/styles/index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,49 +15,51 @@
     <title>Snake</title>
   </head>
   <body>
-    <header class="header">
-      <h1>PlaySnake Browser</h1>
-    </header>
-    <main class="main">
-      <div class="modal">
-        <form class="form" id="form">
-          <label for="player-name">Enter your name:</label>
-          <input type="text" id="player-name" name="player-name" required />
-          <input
-            type="submit"
-            value="Start Game"
-            id="start-game"
-            class="button"
-          />
-        </form>
-        <div class="sound">
-          <img
-            id="play"
-            onclick="toggleAudio()"
-            src="https://res.cloudinary.com/dchan630/image/upload/v1481676817/play_ierlvl.png"
-            class="img-fluid"
-            alt="Responsive image"
-          /><audio
-            id="player"
-            src="https://res.cloudinary.com/dchan630/video/upload/v1481677767/Narcos_s4yvuf.mp3"
-          ></audio>
-          <img
-            id="pause"
-            onclick="toggleAudio()"
-            src="https://res.cloudinary.com/dchan630/image/upload/v1481676820/pause_nqfaht.png"
-            class="img-fluid"
-            alt="Responsive image"
-          />
-          <p class="sound__enable">Enable Sound</p>
+    <div id="app">
+      <header class="header">
+        <h1>PlaySnake Browser</h1>
+      </header>
+      <main class="main">
+        <div class="modal">
+          <form class="form" id="form">
+            <label for="player-name">Enter your name:</label>
+            <input type="text" id="player-name" name="player-name" required />
+            <input
+              type="submit"
+              value="Start Game"
+              id="start-game"
+              class="button"
+            />
+          </form>
+          <div class="sound">
+            <img
+              id="play"
+              onclick="toggleAudio()"
+              src="https://res.cloudinary.com/dchan630/image/upload/v1481676817/play_ierlvl.png"
+              class="img-fluid"
+              alt="Responsive image"
+            /><audio
+              id="player"
+              src="https://res.cloudinary.com/dchan630/video/upload/v1481677767/Narcos_s4yvuf.mp3"
+            ></audio>
+            <img
+              id="pause"
+              onclick="toggleAudio()"
+              src="https://res.cloudinary.com/dchan630/image/upload/v1481676820/pause_nqfaht.png"
+              class="img-fluid"
+              alt="Responsive image"
+            />
+            <p class="sound__enable">Enable Sound</p>
+          </div>
         </div>
-      </div>
-    </main>
-    <footer class="footer">
-      <h2 class="footer__heading">
-        Developed by <span class="footer__span">David Morgade Gil</span>
-      </h2>
-      <a href="https://www.developermorgade.es/">Developer Morgade</a>
-    </footer>
+      </main>
+      <footer class="footer">
+        <h2 class="footer__heading">
+          Developed by <span class="footer__span">David Morgade Gil</span>
+        </h2>
+        <a href="https://www.developermorgade.es/">Developer Morgade</a>
+      </footer>
+    </div>
     <script type="module" src="src/ts/login.ts"></script>
   </body>
 </html>

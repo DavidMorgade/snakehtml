@@ -1,6 +1,6 @@
 import { Point } from "./point";
 import { Snake } from "./snake";
-import { player } from "./login";
+import { Player } from "./player";
 
 // Objects
 const snake = new Snake();
@@ -16,17 +16,13 @@ resetButton.addEventListener("click", () => {
   document.location.reload();
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  setHTMLNameAndScore();
-  startGame();
-});
-
-const setHTMLNameAndScore = () => {
+const setHTMLNameAndScore = (player: Player) => {
   player.setHTMLPlayerName();
   player.setHTMLPlayerScore();
 };
 
-const startGame = () => {
+export const startGame = (player: Player) => {
+  setHTMLNameAndScore(player);
   point.generatePointOnGameBoard(container);
   document.addEventListener("keydown", (event) => snake.evaluateKey(event));
   snake.startAutoMove(container, player, point);
