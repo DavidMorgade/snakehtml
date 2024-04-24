@@ -43,6 +43,6 @@
 .point {
   width: 10px;
   height: 10px;
-  background-color: red; /* Color del punto */
+  background-color: rgb(20, 141, 20); /* Color del punto */
   position: absolute;
 }
