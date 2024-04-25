@@ -26,6 +26,7 @@ const addSnakeHTML = () => {
   app.remove();
   const newApp = document.createElement("div");
   newApp.id = "app";
+  // The HTML template for the snake game
   newApp.innerHTML = `
       <main>
         <div id="game-board">

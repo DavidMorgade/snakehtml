@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "JYejkQa3R9i5I5T2vdP7XS5qUd/BNWXvuwK9DASEdqg=",
+  "Source": "SnakeServer",
+  "BasePath": "_content/SnakeServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
