@@ -27,6 +27,23 @@ namespace SnakeServer.Controllers
                 return Ok(await appDbContext.Users.ToListAsync());
             }
             return BadRequest("Object instance not set");
-        }   
+        }
+        // Get all Highscores from the database
+        [HttpGet]
+        public async Task<ActionResult<List<User>>> GetScores()
+        {
+            return Ok(await appDbContext.Users.ToListAsync());
+        }
+        // Get a specific Highscore by ID
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetScore(int id)
+        {
+            var user = await appDbContext.Users.FindAsync(id);
+            if(user != null)
+            {
+                return Ok(user);
+            }
+            return NotFound("User not found");
+        }
     }
 }
