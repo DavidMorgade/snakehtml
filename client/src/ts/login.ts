@@ -8,6 +8,9 @@ const audioButtonUnmuted = document.getElementById("play") as HTMLButtonElement;
 const highscoreButton = document.querySelector(
   ".btn__highscore"
 ) as HTMLButtonElement;
+const modalBtnClose = document.getElementById(
+  "close-modal"
+) as HTMLButtonElement;
 
 export const player = new Player("");
 
@@ -24,19 +27,11 @@ form.addEventListener("submit", (event) => {
 });
 
 highscoreButton.addEventListener("click", () => {
-  fetch(`${API_URL_DEV}/Values`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+  showHighScores();
+});
+
+modalBtnClose.addEventListener("click", () => {
+  hideHighScores();
 });
 
 audioButtonMuted.addEventListener("click", toogleAudio);
@@ -72,4 +67,47 @@ function toogleAudio() {
     audioButtonMuted.style.display = "none";
     audioButtonUnmuted.style.display = "block";
   }
+}
+
+function showHighScores() {
+  const modal = document.getElementById("highScoresModal") as HTMLDivElement;
+  modal.style.display = "block";
+  if (document.getElementById("highScores") !== null) return;
+  fetch(`${API_URL_DEV}/Values/top`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.length > 0) {
+        const highScores = document.createElement("ul");
+        highScores.id = "highScores";
+        highScores.className = "highscores";
+        highScores.innerHTML = "";
+        data.forEach((element: any, index: number) => {
+          if (index > 9) return;
+          const li = document.createElement("li");
+          li.className = "highscore";
+          li.textContent = `${index + 1} - ${element.name} Score: ${
+            element.score
+          }`;
+          highScores.appendChild(li);
+        });
+        const modalContent = document.getElementById(
+          "modal-content"
+        ) as HTMLDivElement;
+        modalContent.appendChild(highScores);
+      }
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+function hideHighScores() {
+  const modal = document.getElementById("highScoresModal") as HTMLDivElement;
+
+  modal.style.display = "none";
 }

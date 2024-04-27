@@ -34,6 +34,12 @@ namespace SnakeServer.Controllers
         {
             return Ok(await appDbContext.Users.ToListAsync());
         }
+        // Get the top 10 Highscores
+        [HttpGet("top")]
+        public async Task<ActionResult<List<User>>> GetTopScores()
+        {
+            return Ok(await appDbContext.Users.OrderByDescending(u => u.Score).Take(10).ToListAsync());
+        }
         // Get a specific Highscore by ID
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetScore(int id)
