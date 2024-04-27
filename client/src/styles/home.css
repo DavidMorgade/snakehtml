@@ -55,12 +55,12 @@ body {
 }
 .login {
   background-color: var(--modal-color);
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  gap: 2rem;
   border-radius: 10px;
   background-color: var(--modal-color);
   color: var(--text-color);
@@ -178,6 +178,12 @@ body {
   align-items: center;
   gap: 2rem;
   width: 100%;
+}
+.form input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
 }
 .button {
   padding: 0.5rem 1rem;

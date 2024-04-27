@@ -1,5 +1,8 @@
+import { API_URL_DEV } from "./consts";
 import { Player } from "./player";
 import { Point } from "./point";
+
+const gameBoard = document.getElementById("game-board") as HTMLDivElement;
 
 export class Snake {
   private segments: { posX: number; posY: number }[];
@@ -101,8 +104,8 @@ export class Snake {
     });
     if (this.checkColision()) {
       clearInterval(this.intervalId as number);
-      alert(`¡Has perdido! Tu puntuación ha sido de ${player.getScore}`);
-      document.location.reload();
+      this.generateFinishWindow(player);
+      this.sendScore(player);
     }
     // Volver a dibujar el punto si aún no ha sido capturado
     if (!this.pointIsCaptured(point)) {
@@ -155,6 +158,36 @@ export class Snake {
     const newSpeed = this.speed - 2;
     this.speed = Math.max(newSpeed, 2);
     this.startAutoMove(container, player, point);
+  }
+
+  private generateFinishWindow(player: Player): void {
+    const finishWindow = document.createElement("div");
+    finishWindow.id = "finish-modal";
+    finishWindow.className = "modal-finish";
+    finishWindow.innerHTML = `
+      <div class="modal-content-finish">
+        <h1>¡Has perdido!</h1>
+        <p>Tu puntuación ha sido de ${player.getScore}</p>
+        <button class="btn" id="restart-button">Volver a inicio</button>
+      </div>
+    `;
+    gameBoard.appendChild(finishWindow);
+    const restartButton = document.getElementById("restart-button");
+    restartButton?.addEventListener("click", () => {
+      document.location.reload();
+    });
+  }
+
+  private sendScore(player: Player): void {
+    const score = player.getScore;
+    const name = player.getName;
+    fetch(`${API_URL_DEV}/Values`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, score }),
+    });
   }
 
   public getSegments(): { posX: number; posY: number }[] {
