@@ -1,11 +1,17 @@
+import { API_URL_DEV } from "./consts";
 import { Player } from "./player";
 
+// HTML Elements
 const form = document.getElementById("form") as HTMLFormElement;
 const audioButtonMuted = document.getElementById("pause") as HTMLButtonElement;
 const audioButtonUnmuted = document.getElementById("play") as HTMLButtonElement;
+const highscoreButton = document.querySelector(
+  ".btn__highscore"
+) as HTMLButtonElement;
 
 export const player = new Player("");
 
+// Event Listeners
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const username = (document.getElementById("player-name") as HTMLInputElement)
@@ -15,6 +21,22 @@ form.addEventListener("submit", (event) => {
   import("./main").then((module) => {
     module.startGame(player);
   });
+});
+
+highscoreButton.addEventListener("click", () => {
+  fetch(`${API_URL_DEV}/Values`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 });
 
 audioButtonMuted.addEventListener("click", toogleAudio);

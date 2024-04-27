@@ -45,5 +45,13 @@ namespace SnakeServer.Controllers
             }
             return NotFound("User not found");
         }
+        // Delete all Highscores
+        [HttpDelete]
+        public async Task<ActionResult> DeleteScores()
+        {
+            appDbContext.Users.RemoveRange(appDbContext.Users);
+            await appDbContext.SaveChangesAsync();
+            return Ok("All users deleted");
+        }
     }
 }
