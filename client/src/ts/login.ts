@@ -1,5 +1,6 @@
 import { API_URL_DEV } from "./consts";
 import { Player } from "./player";
+import { formatDate } from "./utils/date";
 
 // HTML Elements
 const form = document.getElementById("form") as HTMLFormElement;
@@ -102,11 +103,12 @@ function showHighScores() {
         highScores.innerHTML = "";
         data.forEach((element: any, index: number) => {
           if (index > 9) return;
+          const formattedDate = formatDate(element);
           const li = document.createElement("li");
           li.className = "highscore";
           li.textContent = `${index + 1} - ${element.name} Score: ${
             element.score
-          }`;
+          } Date: ${formattedDate}`;
           highScores.appendChild(li);
         });
         const modalContent = document.getElementById(
