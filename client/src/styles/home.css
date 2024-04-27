@@ -112,6 +112,7 @@ body {
   float: right;
   font-size: 28px;
   font-weight: bold;
+  align-self: flex-end;
 }
 
 .close:hover,
@@ -120,6 +121,56 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+.modal-instructions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.instructions__explanation {
+  text-align: center;
+}
+.instructions__arrows {
+  display: grid;
+  width: 50%;
+  align-self: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.instructions__arrow--up {
+  grid-column: 2;
+  grid-row: 1;
+  rotate: -90deg;
+}
+.instructions__arrow--left {
+  grid-column: 1;
+  grid-row: 2;
+  rotate: 180deg;
+}
+.instructions__arrow--down {
+  grid-column: 2;
+  grid-row: 3;
+  rotate: 90deg;
+}
+.instructions__arrow--right {
+  grid-column: 3;
+  grid-row: 2;
+}
+.instructions__arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.instructions__arrow img {
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.instructions__arrow img:hover {
+  transform: scale(1.1);
+}
+
 .form {
   display: flex;
   flex-direction: column;
