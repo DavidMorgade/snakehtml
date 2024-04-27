@@ -3,10 +3,19 @@ import { Player } from "./player";
 
 // HTML Elements
 const form = document.getElementById("form") as HTMLFormElement;
+const usernameInput = document.getElementById(
+  "player-name"
+) as HTMLInputElement;
 const audioButtonMuted = document.getElementById("pause") as HTMLButtonElement;
 const audioButtonUnmuted = document.getElementById("play") as HTMLButtonElement;
 const highscoreButton = document.querySelector(
   ".btn__highscore"
+) as HTMLButtonElement;
+const instructionsButton = document.querySelector(
+  ".btn__instructions"
+) as HTMLButtonElement;
+const modalBtnCloseInstructions = document.getElementById(
+  "close-modal--instructions"
 ) as HTMLButtonElement;
 const modalBtnClose = document.getElementById(
   "close-modal"
@@ -17,19 +26,24 @@ export const player = new Player("");
 // Event Listeners
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  const username = (document.getElementById("player-name") as HTMLInputElement)
-    .value;
-  player.setName = username;
+  player.setName = usernameInput.value;
   addSnakeHTML();
   import("./main").then((module) => {
     module.startGame(player);
   });
 });
 
+instructionsButton.addEventListener("click", () => {
+  showInstructions();
+});
+
+modalBtnCloseInstructions.addEventListener("click", () => {
+  hideInstructions();
+});
+
 highscoreButton.addEventListener("click", () => {
   showHighScores();
 });
-
 modalBtnClose.addEventListener("click", () => {
   hideHighScores();
 });
@@ -118,5 +132,14 @@ function showHighScores() {
 function hideHighScores() {
   const modal = document.getElementById("highScoresModal") as HTMLDivElement;
 
+  modal.style.display = "none";
+}
+
+function showInstructions() {
+  const modal = document.getElementById("instructionsModal") as HTMLDivElement;
+  modal.style.display = "block";
+}
+function hideInstructions() {
+  const modal = document.getElementById("instructionsModal") as HTMLDivElement;
   modal.style.display = "none";
 }

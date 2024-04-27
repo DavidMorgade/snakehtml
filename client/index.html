@@ -26,7 +26,13 @@
         <div class="login">
           <form class="form" id="form">
             <label for="player-name">Enter your name:</label>
-            <input type="text" id="player-name" name="player-name" required />
+            <input
+              type="text"
+              id="player-name"
+              name="player-name"
+              maxlength="10"
+              required
+            />
             <input
               type="submit"
               value="Start Game"
@@ -68,6 +74,13 @@
         <div class="modal-content" id="modal-content">
           <span class="close" id="close-modal">&times;</span>
           <h2 class="highscores__heading">HighScores</h2>
+          <!-- High scores content goes here -->
+        </div>
+      </div>
+      <div id="instructionsModal" class="modal">
+        <div class="modal-content" id="modal-content--instructions">
+          <span class="close" id="close-modal--instructions">&times;</span>
+          <h2 class="instructions__heading">Instructions</h2>
           <!-- High scores content goes here -->
         </div>
       </div>
