@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Icon of the website -->
+    <link rel="icon" type="image/png" href="./public/SNAKE-ICON.png" />
     <link rel="stylesheet" href="./src/styles/normalize.css" />
     <link rel="stylesheet" href="./src/styles/home.css" />
     <link rel="stylesheet" href="./src/styles/index.css" />
@@ -29,19 +31,12 @@
               type="submit"
               value="Start Game"
               id="start-game"
-              class="button"
+              class="btn"
             />
           </form>
           <div class="btn__containers">
             <button class="btn btn__highscore">Show Highscores</button>
             <button class="btn btn__instructions">Instructions</button>
-          </div>
-          <div id="highScoresModal" class="modal">
-            <div class="modal-content" id="modal-content">
-              <span class="close" id="close-modal">&times;</span>
-              <h2 class="highscores__heading">High Scores</h2>
-              <!-- High scores content goes here -->
-            </div>
           </div>
           <div class="sound">
             <img
@@ -69,6 +64,13 @@
         </h2>
         <a href="https://www.developermorgade.es/">Developer Morgade</a>
       </footer>
+      <div id="highScoresModal" class="modal">
+        <div class="modal-content" id="modal-content">
+          <span class="close" id="close-modal">&times;</span>
+          <h2 class="highscores__heading">HighScores</h2>
+          <!-- High scores content goes here -->
+        </div>
+      </div>
     </div>
     <script type="module" src="src/ts/login.ts"></script>
   </body>

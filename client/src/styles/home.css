@@ -6,13 +6,19 @@
   --font-family: "Press Start 2p", system-ui, sans-serif;
 }
 
-* {
+/* * {
   box-shadow: 0 0 0 2px red;
-}
+} */
 
 body {
   font-family: var(--font-family);
   background-color: var(--bg-color);
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
 }
 
 #play,
@@ -58,9 +64,9 @@ body {
   border-radius: 10px;
   background-color: var(--modal-color);
   color: var(--text-color);
+  width: 40rem;
   box-shadow: 0 0 10px 5px var(--bg-color);
-  width: 800px;
-  height: 600px;
+
   backdrop-filter: blur(5px);
 }
 .modal {
@@ -153,6 +159,8 @@ body {
 }
 .btn:hover {
   transform: scale(1.1);
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 .sound {
   margin-top: 10rem;

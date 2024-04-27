@@ -47,12 +47,12 @@ const addSnakeHTML = () => {
   newApp.innerHTML = `
       <main>
         <div id="game-board">
-          <div id="game" width="800" height="600"></div>
           <div id="score">
             <h1 id="player-name"></h1>
             <h2>Score: <span id="player-score">0</span></h2>
             <button id="reset-button">Reset</button>
           </div>
+          <div id="game" width="800" height="600"></div>
         </div>
       </main>
   `;
@@ -95,6 +95,15 @@ function showHighScores() {
           }`;
           highScores.appendChild(li);
         });
+        const modalContent = document.getElementById(
+          "modal-content"
+        ) as HTMLDivElement;
+        modalContent.appendChild(highScores);
+      } else {
+        const highScores = document.createElement("p");
+        highScores.id = "highScores";
+        highScores.className = "highscores";
+        highScores.textContent = "No hay puntuaciones";
         const modalContent = document.getElementById(
           "modal-content"
         ) as HTMLDivElement;
