@@ -5,6 +5,13 @@
   /*box shadow that simulates a red border*/
   box-shadow: 0 0 0 5px red;
 }
+body {
+  /* remove scrolling */
+  
+  overflow: hidden;
+
+
+}
 #score {
   display: flex;
   justify-content: space-between;
@@ -21,11 +28,35 @@
   height: 100vh;
 }
 #game {
-  width: 800px;
-  height: 800px;
+  width: 1200px;
+  height: 820px;
   background-color: black;
   border: 5px solid red;
   position: relative;
+}
+@media (max-width: 1200px) {
+  #game {
+    width: 1000px;
+    height: 700px;
+  }
+}
+@media (max-width: 1000px) {
+  #game {
+    width: 800px;
+    height: 600px;
+  }
+}
+@media (max-width: 800px) {
+  #game {
+    width: 600px;
+    height: 600px;
+  }
+}
+@media (max-width: 600px) {
+  #game {
+    width: 400px;
+    height: 600px;
+  }
 }
 #snake {
   width: 30px;
@@ -40,6 +71,30 @@
   width: 10px;
   height: 10px;
   background-color: white; /* Color del snake */
+}
+@media (max-width: 1200px) {
+  #snake {
+    width: 8px;
+    height: 8px;
+  }
+}
+@media (max-width: 1000px) {
+  #snake {
+    width: 6px;
+    height: 6px;
+  }
+}
+@media (max-width: 800px) {
+  #snake {
+    width: 4px;
+    height: 4px;
+  }
+}
+@media (max-width: 600px) {
+  #snake {
+    width: 2px;
+    height: 2px;
+  }
 }
 .point {
   width: 10px;

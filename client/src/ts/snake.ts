@@ -129,12 +129,14 @@ export class Snake {
 
   private checkColision(): boolean {
     const snakeHead = this.segments[0];
+    const boardHeight = document.querySelector("#game")?.clientHeight as number;
+    const boardWidth = document.querySelector("#game")?.clientWidth as number;
     // Comprueba si la cabeza del snake colisiona con los límites del tablero
     if (
-      snakeHead.posX < -9 ||
-      snakeHead.posX >= 800 ||
-      snakeHead.posY < -9 ||
-      snakeHead.posY >= 800
+      snakeHead.posX < 0 ||
+      snakeHead.posX >= boardWidth ||
+      snakeHead.posY < 0 ||
+      snakeHead.posY >= boardHeight - 5
     ) {
       return true;
     }
