@@ -55,6 +55,15 @@ body {
     }
   }
 }
+@media (max-width: 1024px) {
+  .header {
+    padding: 1rem;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+}
 
 .main {
   display: flex;
@@ -82,6 +91,7 @@ body {
     max-width: 90%;
   }
 }
+
 .form {
   display: flex;
   flex-direction: column;
@@ -164,6 +174,11 @@ body {
     font-size: 0.8rem;
   }
 }
+@media (max-width: 1024px) {
+  .sound {
+    margin-top: 5rem;
+  }
+}
 
 .footer {
   display: flex;
@@ -187,6 +202,11 @@ body {
     text-align: center;
   }
 }
+@media (max-width: 1024px) {
+  .footer__heading {
+    font-size: 1rem;
+  }
+}
 .footer__span {
   font-size: 1.5rem;
   font-style: italic;
@@ -198,6 +218,12 @@ body {
     font-size: 1rem;
   }
 }
+@media (max-width: 1024px) {
+  .footer__span {
+    display: block;
+    font-size: 1.1rem;
+  }
+}
 .footer__portfolio {
   font-size: 1.5rem;
   text-align: center;
@@ -205,6 +231,11 @@ body {
 @media (max-width: 768px) {
   .footer__portfolio {
     font-size: 0.8rem;
+  }
+}
+@media (max-width: 1024px) {
+  .footer__portfolio {
+    font-size: 1rem;
   }
 }
 .modal {
@@ -220,7 +251,7 @@ body {
 
 .modal-content {
   background-color: #fefefe;
-  margin: 20% auto;
+  margin: 10% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
