@@ -3,8 +3,8 @@ export class Point {
   private posY: number;
 
   public constructor() {
-    this.posX = this.generateRandomCoordinate();
-    this.posY = this.generateRandomCoordinate();
+    this.posX = this.generateRandomCoordinateX();
+    this.posY = this.generateRandomCoordinateY();
   }
 
   public getPosX(): number {
@@ -40,12 +40,18 @@ export class Point {
 
   public generateNewPoint(): void {
     // generate new random coordinates
-    this.posX = this.generateRandomCoordinate();
-    this.posY = this.generateRandomCoordinate();
+    this.posX = this.generateRandomCoordinateX();
+    this.posY = this.generateRandomCoordinateY();
   }
 
-  // generate random coordinate for the 800 x 800 board
-  private generateRandomCoordinate(): number {
-    return Math.floor(Math.random() * 80) * 10;
+  // generate random coordinate point board X
+  private generateRandomCoordinateX(): number {
+    const boardWidth = document.querySelector("#game")?.clientWidth as number;
+    return Math.floor(Math.random() * boardWidth);
+  }
+  // generate random coordinate point board Y
+  private generateRandomCoordinateY(): number {
+    const boardHeight = document.querySelector("#game")?.clientHeight as number;
+    return Math.floor(Math.random() * boardHeight);
   }
 }
