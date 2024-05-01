@@ -79,6 +79,8 @@ export class Snake {
     }
 
     this.intervalId = setInterval(() => {
+      console.log(point.getPosX(), point.getPosY());
+      console.log(this.posX, this.posY);
       this.move();
       this.updateSnakePosition(container, player, point);
     }, this.getSpeed());

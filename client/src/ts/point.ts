@@ -47,11 +47,13 @@ export class Point {
   // generate random coordinate point board X
   private generateRandomCoordinateX(): number {
     const boardWidth = document.querySelector("#game")?.clientWidth as number;
-    return Math.floor(Math.random() * boardWidth);
+    // the number needs to end in 10 to fit the snake segments
+    return Math.floor((Math.random() * boardWidth) / 10) * 10;
   }
   // generate random coordinate point board Y
   private generateRandomCoordinateY(): number {
     const boardHeight = document.querySelector("#game")?.clientHeight as number;
-    return Math.floor(Math.random() * boardHeight);
+    // the number needs to end in 10 to fit the snake segments
+    return Math.floor((Math.random() * boardHeight) / 10) * 10;
   }
 }
