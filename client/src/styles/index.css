@@ -56,19 +56,36 @@ body {
     height: 600px;
   }
 }
-#snake {
-  width: 30px;
-  height: 10px;
-  background-color: green;
-  position: absolute;
-  top: 400px;
-  left: 10px;
-}
+
 .snake-segment {
   position: absolute;
   width: 10px;
   height: 10px;
   background-color: white; /* Color del snake */
+}
+@media (max-width: 1200px) {
+  .snake-segment {
+    width: 9px;
+    height: 9px;
+  }
+}
+@media (max-width: 1000px) {
+  .snake-segment {
+    width: 8px;
+    height: 8px;
+  }
+}
+@media (max-width: 800px) {
+  .snake-segment {
+    width: 7px;
+    height: 7px;
+  }
+}
+@media (max-width: 600px) {
+  .snake-segment {
+    width: 6px;
+    height: 6px;
+  }
 }
 .point {
   width: 10px;

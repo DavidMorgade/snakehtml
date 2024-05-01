@@ -36,6 +36,8 @@ export class Snake {
   }
 
   public move(): void {
+    const snakeWidth =
+      document.querySelector(".snake-segment")?.clientWidth || 10;
     if (this.segments.length > 0) {
       // Actualiza la posición del cuerpo del snake
       for (let i = this.segments.length - 1; i > 0; i--) {
@@ -43,10 +45,9 @@ export class Snake {
       }
       this.segments[0] = { posX: this.posX, posY: this.posY };
     }
-
     // Mueve la cabeza en la dirección actual
-    this.posX += this.directionX * 10;
-    this.posY += this.directionY * 10;
+    this.posX += this.directionX * snakeWidth;
+    this.posY += this.directionY * snakeWidth;
   }
 
   public evaluateKey = (event: KeyboardEvent) => {
@@ -79,8 +80,7 @@ export class Snake {
     }
 
     this.intervalId = setInterval(() => {
-      console.log(point.getPosX(), point.getPosY());
-      console.log(this.posX, this.posY);
+      console.log(this.segments);
       this.move();
       this.updateSnakePosition(container, player, point);
     }, this.getSpeed());
