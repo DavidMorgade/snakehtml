@@ -29,6 +29,7 @@ export class Point {
     pointElement.style.left = `${this.posX}px`;
     pointElement.style.top = `${this.posY}px`;
     HTMLDivElement.appendChild(pointElement);
+    this.generateNewPoint();
   }
 
   public deletePointOnGameBoard(HTMLDivElement: HTMLElement): void {
@@ -47,7 +48,7 @@ export class Point {
   // generate random coordinate point board X
   private generateRandomCoordinateX(): number {
     const boardWidth = document.querySelector("#game")?.clientWidth as number;
-    // the number needs to end in 10 to fit the snake segments
+    // The number needs to end in the same width as the point
     return Math.floor((Math.random() * boardWidth) / 10) * 10;
   }
   // generate random coordinate point board Y

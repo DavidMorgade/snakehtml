@@ -93,6 +93,30 @@ body {
   background-color: rgb(20, 141, 20); /* Color del punto */
   position: absolute;
 }
+@media (max-width: 1200px) {
+  .point {
+    width: 9px;
+    height: 9px;
+  }
+}
+@media (max-width: 1000px) {
+  .point {
+    width: 8px;
+    height: 8px;
+  }
+}
+@media (max-width: 800px) {
+  .point {
+    width: 7px;
+    height: 7px;
+  }
+}
+@media (max-width: 600px) {
+  .point {
+    width: 6px;
+    height: 6px;
+  }
+}
 .modal-finish {
   position: fixed;
   z-index: 1;

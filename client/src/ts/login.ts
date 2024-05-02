@@ -67,7 +67,8 @@ const addSnakeHTML = () => {
             <h2>Score: <span id="player-score">0</span></h2>
             <button id="reset-button">Reset</button>
           </div>
-          <div id="game" width="800" height="600"></div>
+          <div id="game" width="800" height="600">
+          </div>
         </div>
       </main>
   `;
