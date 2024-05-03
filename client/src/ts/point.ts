@@ -24,12 +24,10 @@ export class Point {
   }
 
   public generatePointOnGameBoard(HTMLDivElement: HTMLDivElement): void {
-    const pointElement = document.createElement("div");
-    pointElement.classList.add("point");
+    const pointElement = document.querySelector(".point") as HTMLDivElement;
     pointElement.style.left = `${this.posX}px`;
     pointElement.style.top = `${this.posY}px`;
     HTMLDivElement.appendChild(pointElement);
-    this.generateNewPoint();
   }
 
   public deletePointOnGameBoard(HTMLDivElement: HTMLElement): void {
@@ -43,6 +41,15 @@ export class Point {
     // generate new random coordinates
     this.posX = this.generateRandomCoordinateX();
     this.posY = this.generateRandomCoordinateY();
+    // repaint point on game board
+    this.repaintPointOnGameBoard();
+  }
+
+  // repaint point on game board
+  private repaintPointOnGameBoard(): void {
+    const pointElement = document.querySelector(".point") as HTMLDivElement;
+    pointElement.style.left = `${this.posX}px`;
+    pointElement.style.top = `${this.posY}px`;
   }
 
   // generate random coordinate point board X

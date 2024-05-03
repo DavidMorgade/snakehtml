@@ -80,7 +80,6 @@ export class Snake {
     }
 
     this.intervalId = setInterval(() => {
-      console.log(this.segments);
       this.move();
       this.updateSnakePosition(container, player, point);
     }, this.getSpeed());
@@ -93,8 +92,11 @@ export class Snake {
   ): void {
     const snakeSegments = this.getSegments();
 
-    // Limpiar el contenedor
-    container.innerHTML = "";
+    // Eliminar todos los segmentos del snake del tablero
+    const snakeSegmentElements = document.querySelectorAll(".snake-segment");
+    snakeSegmentElements.forEach((segment) => {
+      container.removeChild(segment);
+    });
 
     // Pintar cada segmento del snake
     snakeSegments.forEach((segment) => {
@@ -111,7 +113,6 @@ export class Snake {
     }
     // Volver a dibujar el punto si aún no ha sido capturado
     if (!this.pointIsCaptured(point)) {
-      point.generatePointOnGameBoard(container);
     } else {
       this.grow(container, player, point);
       player.increaseScore();
